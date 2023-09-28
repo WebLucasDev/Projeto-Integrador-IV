@@ -11,12 +11,12 @@ if(isset($_COOKIE['user_id'])){
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>teachers</title>
+   <title>Professores</title>
 
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
@@ -33,19 +33,20 @@ if(isset($_COOKIE['user_id'])){
 
 <section class="teachers">
 
-   <h1 class="heading">expert tutors</h1>
+   <h1 class="heading">Professores</h1>
 
    <form action="search_tutor.php" method="post" class="search-tutor">
-      <input type="text" name="search_tutor" maxlength="100" placeholder="search tutor..." required>
+      <input type="text" name="search_tutor" maxlength="100" placeholder="pesquise pelo professor que você deseja..." required>
       <button type="submit" name="search_tutor_btn" class="fas fa-search"></button>
    </form>
 
    <div class="box-container">
 
       <div class="box offer">
-         <h3>become a tutor</h3>
-         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laborum, magnam!</p>
-         <a href="admin/register.php" class="inline-btn">get started</a>
+         <h3>torne-se um professor</h3>
+         <p>Você também possui paixão pelo ensino e quer contribuir para a formação dos nossos futuros profissionais da saúde? torne-se um professor agora mesmo!</p>
+         <a href="" class="inline-btn">vamos lá!</a>
+         <!-- admin/register.php -->
       </div>
 
       <?php
@@ -81,18 +82,18 @@ if(isset($_COOKIE['user_id'])){
             </div>
          </div>
          <p>playlists : <span><?= $total_playlists; ?></span></p>
-         <p>total videos : <span><?= $total_contents ?></span></p>
-         <p>total likes : <span><?= $total_likes ?></span></p>
-         <p>total comments : <span><?= $total_comments ?></span></p>
+         <p>total de videos : <span><?= $total_contents ?></span></p>
+         <p>total de likes : <span><?= $total_likes ?></span></p>
+         <p>total de comentários : <span><?= $total_comments ?></span></p>
          <form action="tutor_profile.php" method="post">
             <input type="hidden" name="tutor_email" value="<?= $fetch_tutor['email']; ?>">
-            <input type="submit" value="view profile" name="tutor_fetch" class="inline-btn">
+            <input type="submit" value="visualise o perfil" name="tutor_fetch" class="inline-btn">
          </form>
       </div>
       <?php
             }
          }else{
-            echo '<p class="empty">no tutors found!</p>';
+            echo '<p class="empty">nenhum professor encontrado!</p>';
          }
       ?>
 
