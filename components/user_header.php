@@ -48,10 +48,10 @@ if(isset($message)){
          <?php
             }else{
          ?>
-         <h3>Login ou Registre-se</h3>
+         <h3>Login ou Cadastro</h3>
           <div class="flex-btn">
             <a href="login.php" class="option-btn">login</a>
-            <a href="register.php" class="option-btn">registre</a>
+            <a href="register.php" class="option-btn">cadastro</a>
          </div>
          <?php
             }
@@ -86,10 +86,10 @@ if(isset($message)){
          <?php
             }else{
          ?>
-         <h3>Login ou Registre-se</h3>
+         <h3>Login ou Cadastro</h3>
           <div class="flex-btn" style="padding-top: .5rem;">
             <a href="login.php" class="option-btn">login</a>
-            <a href="register.php" class="option-btn">registre</a>
+            <a href="register.php" class="option-btn">cadastro</a>
          </div>
          <?php
             }

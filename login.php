@@ -23,7 +23,7 @@ if(isset($_POST['submit'])){
      setcookie('user_id', $row['id'], time() + 60*60*24*30, '/');
      header('location:home.php');
    }else{
-      $message[] = 'incorrect email or password!';
+      $message[] = 'email ou senha incorretos!';
    }
 
 }
@@ -31,7 +31,7 @@ if(isset($_POST['submit'])){
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -52,13 +52,13 @@ if(isset($_POST['submit'])){
 <section class="form-container">
 
    <form action="" method="post" enctype="multipart/form-data" class="login">
-      <h3>welcome back!</h3>
-      <p>your email <span>*</span></p>
-      <input type="email" name="email" placeholder="enter your email" maxlength="50" required class="box">
-      <p>your password <span>*</span></p>
-      <input type="password" name="pass" placeholder="enter your password" maxlength="20" required class="box">
-      <p class="link">don't have an account? <a href="register.php">register now</a></p>
-      <input type="submit" name="submit" value="login now" class="btn">
+      <h3>Acesse sua conta</h3>
+      <p>email <span>*</span></p>
+      <input type="email" name="email" placeholder="digite seu email" maxlength="50" required class="box">
+      <p>senha <span>*</span></p>
+      <input type="password" name="pass" placeholder="digite sua senha" maxlength="20" required class="box">
+      <p class="link">não possui uma conta? <a href="register.php">cadastre-se agora</a></p>
+      <input type="submit" name="submit" value="login" class="btn">
    </form>
 
 </section>

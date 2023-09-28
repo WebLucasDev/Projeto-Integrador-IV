@@ -24,12 +24,12 @@ $total_bookmarked = $select_bookmark->rowCount();
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>profile</title>
+   <title>Perfil</title>
 
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
@@ -44,15 +44,15 @@ $total_bookmarked = $select_bookmark->rowCount();
 
 <section class="profile">
 
-   <h1 class="heading">profile details</h1>
+   <h1 class="heading">Detalhes do Perfil</h1>
 
    <div class="details">
 
       <div class="user">
-         <img src="uploaded_files/<?= $fetch_profile['image']; ?>" alt="">
+         <img src="uploaded_files/<?= $fetch_profile['image']; ?>" alt="foto-perfil">
          <h3><?= $fetch_profile['name']; ?></h3>
-         <p>student</p>
-         <a href="update.php" class="inline-btn">update profile</a>
+         <!-- <p>student</p> -->
+         <a href="update.php" class="inline-btn">Alterar perfil</a>
       </div>
 
       <div class="box-container">
@@ -62,10 +62,10 @@ $total_bookmarked = $select_bookmark->rowCount();
                <i class="fas fa-bookmark"></i>
                <div>
                   <h3><?= $total_bookmarked; ?></h3>
-                  <span>saved playlists</span>
+                  <span>playlists salvas</span>
                </div>
             </div>
-            <a href="#" class="inline-btn">view playlists</a>
+            <a href="#" class="inline-btn">Visualizar Playlists</a>
          </div>
 
          <div class="box">
@@ -73,10 +73,10 @@ $total_bookmarked = $select_bookmark->rowCount();
                <i class="fas fa-heart"></i>
                <div>
                   <h3><?= $total_likes; ?></h3>
-                  <span>liked tutorials</span>
+                  <span>tutoriais com like</span>
                </div>
             </div>
-            <a href="#" class="inline-btn">view liked</a>
+            <a href="#" class="inline-btn">Visualizar Playlists com Like</a>
          </div>
 
          <div class="box">
@@ -84,10 +84,10 @@ $total_bookmarked = $select_bookmark->rowCount();
                <i class="fas fa-comment"></i>
                <div>
                   <h3><?= $total_comments; ?></h3>
-                  <span>video comments</span>
+                  <span>comentários em vídeos</span>
                </div>
             </div>
-            <a href="#" class="inline-btn">view comments</a>
+            <a href="#" class="inline-btn">Visualizar Comentários</a>
          </div>
 
       </div>
@@ -109,14 +109,9 @@ $total_bookmarked = $select_bookmark->rowCount();
 
 
 
+
 <!-- footer section starts  -->
-
-<footer class="footer">
-
-   &copy; copyright @ 2022 by <span>mr. web designer</span> | all rights reserved!
-
-</footer>
-
+<?php include 'components/footer.php'; ?>
 <!-- footer section ends -->
 
 <!-- custom js file link  -->

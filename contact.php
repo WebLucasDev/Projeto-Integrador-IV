@@ -23,11 +23,11 @@ if(isset($_POST['submit'])){
    $select_contact->execute([$name, $email, $number, $msg]);
 
    if($select_contact->rowCount() > 0){
-      $message[] = 'message sent already!';
+      $message[] = 'mensagem já enviada!';
    }else{
       $insert_message = $conn->prepare("INSERT INTO `contact`(name, email, number, message) VALUES(?,?,?,?)");
       $insert_message->execute([$name, $email, $number, $msg]);
-      $message[] = 'message sent successfully!';
+      $message[] = 'mensagem enviada com sucesso!';
    }
 
 }
@@ -35,12 +35,12 @@ if(isset($_POST['submit'])){
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>contact</title>
+   <title>Fale Conosco</title>
 
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
@@ -64,21 +64,21 @@ if(isset($_POST['submit'])){
       </div>
 
       <form action="" method="post">
-         <h3>get in touch</h3>
-         <input type="text" placeholder="enter your name" required maxlength="100" name="name" class="box">
-         <input type="email" placeholder="enter your email" required maxlength="100" name="email" class="box">
-         <input type="number" min="0" max="9999999999" placeholder="enter your number" required maxlength="10" name="number" class="box">
-         <textarea name="msg" class="box" placeholder="enter your message" required cols="30" rows="10" maxlength="1000"></textarea>
-         <input type="submit" value="send message" class="inline-btn" name="submit">
+         <h3><strong>Fale Conosco</strong></h3>
+         <input type="text" placeholder="nome" required maxlength="100" name="name" class="box">
+         <input type="email" placeholder="email" required maxlength="100" name="email" class="box">
+         <input type="text" min="0" max="9999999999" placeholder="( ) 00000-0000" required maxlength="11" name="number" class="box">
+         <textarea name="msg" class="box" placeholder="digite aqui sua mensagem" required cols="30" rows="10" maxlength="1000"></textarea>
+         <input type="submit" value="enviar mensagem" class="inline-btn" name="submit">
       </form>
 
    </div>
 
-   <div class="box-container">
+   <!-- <div class="box-container">
 
       <div class="box">
          <i class="fas fa-phone"></i>
-         <h3>phone number</h3>
+         <h3>contato</h3>
          <a href="tel:1234567890">123-456-7890</a>
          <a href="tel:1112223333">111-222-3333</a>
       </div>
@@ -97,7 +97,7 @@ if(isset($_POST['submit'])){
       </div>
 
 
-   </div>
+   </div> -->
 
 </section>
 
@@ -113,7 +113,7 @@ if(isset($_POST['submit'])){
 
 
 
-<?php include 'components/footer.php'; ?>  
+  
 
 <!-- custom js file link  -->
 <script src="js/script.js"></script>

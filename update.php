@@ -24,7 +24,7 @@ if(isset($_POST['submit'])){
   if(!empty($name)){
    $update_name = $conn->prepare("UPDATE `users` SET name = ? WHERE id = ?");
    $update_name->execute([$name, $user_id]);
-   $message[] = 'username updated successfully!';
+   $message[] = 'Nome de usuário alterado com sucesso!';
   }
 
    $email = $_POST['email'];
@@ -34,11 +34,11 @@ if(isset($_POST['submit'])){
       $select_email = $conn->prepare("SELECT email FROM `users` WHERE email = ?");
       $select_email->execute([$email]);
       if($select_email->rowCount() > 0){
-         $message[] = 'email already taken!';
+         $message[] = 'email já cadastrado!';
       }else{
          $update_email = $conn->prepare("UPDATE `users` SET email = ? WHERE id = ?");
          $update_email->execute([$email, $user_id]);
-         $message[] = 'email updated successfully!';
+         $message[] = 'email alterado com sucesso!';
       }
    }
 
@@ -52,7 +52,7 @@ if(isset($_POST['submit'])){
 
    if(!empty($image)){
       if($image_size > 2000000){
-         $message[] = 'image size too large!';
+         $message[] = 'tamanho da foto de perfil muito grande!';
       }else{
          $update_image = $conn->prepare("UPDATE `users` SET `image` = ? WHERE id = ?");
          $update_image->execute([$rename, $user_id]);
@@ -60,7 +60,7 @@ if(isset($_POST['submit'])){
          if($prev_image != '' AND $prev_image != $rename){
             unlink('uploaded_files/'.$prev_image);
          }
-         $message[] = 'image updated successfully!';
+         $message[] = 'foto de perfil alterada com sucesso!';
       }
    }
 
@@ -74,16 +74,16 @@ if(isset($_POST['submit'])){
 
    if($old_pass != $empty_pass){
       if($old_pass != $prev_pass){
-         $message[] = 'old password not matched!';
+         $message[] = 'senha antiga não corresponde!';
       }elseif($new_pass != $cpass){
-         $message[] = 'confirm password not matched!';
+         $message[] = 'confirme a senha não correspondida!';
       }else{
          if($new_pass != $empty_pass){
             $update_pass = $conn->prepare("UPDATE `users` SET password = ? WHERE id = ?");
             $update_pass->execute([$cpass, $user_id]);
-            $message[] = 'password updated successfully!';
+            $message[] = 'senha atualizada com sucesso!';
          }else{
-            $message[] = 'please enter a new password!';
+            $message[] = 'por favor insira uma nova senha!';
          }
       }
    }
@@ -93,12 +93,12 @@ if(isset($_POST['submit'])){
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>update profile</title>
+   <title>Alterar Perfil</title>
 
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
@@ -114,23 +114,23 @@ if(isset($_POST['submit'])){
 <section class="form-container" style="min-height: calc(100vh - 19rem);">
 
    <form action="" method="post" enctype="multipart/form-data">
-      <h3>update profile</h3>
+      <h3>Alterar Perfil</h3>
       <div class="flex">
          <div class="col">
-            <p>your name</p>
+            <p>Nome</p>
             <input type="text" name="name" placeholder="<?= $fetch_profile['name']; ?>" maxlength="100" class="box">
-            <p>your email</p>
+            <p>Email</p>
             <input type="email" name="email" placeholder="<?= $fetch_profile['email']; ?>" maxlength="100" class="box">
-            <p>update pic</p>
+            <p>Foto de perfil</p>
             <input type="file" name="image" accept="image/*" class="box">
          </div>
          <div class="col">
-               <p>old password</p>
-               <input type="password" name="old_pass" placeholder="enter your old password" maxlength="50" class="box">
-               <p>new password</p>
-               <input type="password" name="new_pass" placeholder="enter your new password" maxlength="50" class="box">
-               <p>confirm password</p>
-               <input type="password" name="cpass" placeholder="confirm your new password" maxlength="50" class="box">
+               <p>senha atual</p>
+               <input type="password" name="old_pass" placeholder="digite sua senha atual" maxlength="50" class="box">
+               <p>nova senha</p>
+               <input type="password" name="new_pass" placeholder="digite sua nova senha" maxlength="50" class="box">
+               <p>confirme a nova senha</p>
+               <input type="password" name="cpass" placeholder="confirme sua nova senha" maxlength="50" class="box">
          </div>
       </div>
       <input type="submit" name="submit" value="update profile" class="btn">

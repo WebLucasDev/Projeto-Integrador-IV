@@ -11,12 +11,12 @@ if(isset($_COOKIE['user_id'])){
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>about</title>
+   <title>Sobre Nós</title>
 
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
@@ -40,9 +40,9 @@ if(isset($_COOKIE['user_id'])){
       </div>
 
       <div class="content">
-         <h3>why choose us?</h3>
+         <h3>Quem somos?</h3>
          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque nobis distinctio, nisi consequatur ad sequi, rem odit fugiat assumenda eligendi iure aut sunt ratione, tempore porro expedita quisquam.</p>
-         <a href="courses.html" class="inline-btn">our courses</a>
+         <a href="courses.html" class="inline-btn">nossos cursos</a>
       </div>
 
    </div>
@@ -52,32 +52,32 @@ if(isset($_COOKIE['user_id'])){
       <div class="box">
          <i class="fas fa-graduation-cap"></i>
          <div>
-            <h3>+1k</h3>
-            <span>online courses</span>
+            <h3>qnt cursos</h3>
+            <span>cursos disponíveis</span>
          </div>
       </div>
 
       <div class="box">
          <i class="fas fa-user-graduate"></i>
          <div>
-            <h3>+25k</h3>
-            <span>brilliants students</span>
+            <h3>qnt estudantes</h3>
+            <span>estudantes cadastrados</span>
          </div>
       </div>
 
       <div class="box">
          <i class="fas fa-chalkboard-user"></i>
          <div>
-            <h3>+5k</h3>
-            <span>expert teachers</span>
+            <h3>qnt professores</h3>
+            <span>professores experientes</span>
          </div>
       </div>
 
       <div class="box">
          <i class="fas fa-briefcase"></i>
          <div>
-            <h3>100%</h3>
-            <span>job placement</span>
+            <h3>% de aproveitamento</h3>
+            <span>do conteúdo disponível</span>
          </div>
       </div>
 
@@ -91,7 +91,7 @@ if(isset($_COOKIE['user_id'])){
 
 <section class="reviews">
 
-   <h1 class="heading">student's reviews</h1>
+   <h1 class="heading">Relatos dos estudantes</h1>
 
    <div class="box-container">
 
@@ -100,7 +100,7 @@ if(isset($_COOKIE['user_id'])){
          <div class="user">
             <img src="images/pic-2.jpg" alt="">
             <div>
-               <h3>john deo</h3>
+               <h3>estudante1</h3>
                <div class="stars">
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
@@ -117,7 +117,7 @@ if(isset($_COOKIE['user_id'])){
          <div class="user">
             <img src="images/pic-3.jpg" alt="">
             <div>
-               <h3>john deo</h3>
+               <h3>estudante1o</h3>
                <div class="stars">
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
@@ -134,7 +134,7 @@ if(isset($_COOKIE['user_id'])){
          <div class="user">
             <img src="images/pic-4.jpg" alt="">
             <div>
-               <h3>john deo</h3>
+               <h3>estudante1</h3>
                <div class="stars">
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
@@ -151,7 +151,7 @@ if(isset($_COOKIE['user_id'])){
          <div class="user">
             <img src="images/pic-5.jpg" alt="">
             <div>
-               <h3>john deo</h3>
+               <h3>estudante1</h3>
                <div class="stars">
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
@@ -168,7 +168,7 @@ if(isset($_COOKIE['user_id'])){
          <div class="user">
             <img src="images/pic-6.jpg" alt="">
             <div>
-               <h3>john deo</h3>
+               <h3>estudante1</h3>
                <div class="stars">
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
@@ -185,7 +185,7 @@ if(isset($_COOKIE['user_id'])){
          <div class="user">
             <img src="images/pic-7.jpg" alt="">
             <div>
-               <h3>john deo</h3>
+               <h3>estudante1</h3>
                <div class="stars">
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>

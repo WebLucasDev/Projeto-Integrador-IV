@@ -32,10 +32,10 @@ if(isset($_POST['submit'])){
    $select_user->execute([$email]);
    
    if($select_user->rowCount() > 0){
-      $message[] = 'email already taken!';
+      $message[] = 'email já cadastrado!';
    }else{
       if($pass != $cpass){
-         $message[] = 'confirm passowrd not matched!';
+         $message[] = 'confirme a senha corretamente!';
       }else{
          $insert_user = $conn->prepare("INSERT INTO `users`(id, name, email, password, image) VALUES(?,?,?,?,?)");
          $insert_user->execute([$id, $name, $email, $cpass, $rename]);
@@ -57,12 +57,12 @@ if(isset($_POST['submit'])){
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>home</title>
+   <title>Crie sua conta agora mesmo</title>
 
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
@@ -78,25 +78,25 @@ if(isset($_POST['submit'])){
 <section class="form-container">
 
    <form class="register" action="" method="post" enctype="multipart/form-data">
-      <h3>create account</h3>
+      <h3>Cadastre-se agora mesmo</h3>
       <div class="flex">
          <div class="col">
-            <p>your name <span>*</span></p>
-            <input type="text" name="name" placeholder="eneter your name" maxlength="50" required class="box">
-            <p>your email <span>*</span></p>
-            <input type="email" name="email" placeholder="enter your email" maxlength="20" required class="box">
+            <p>nome de usuário <span>*</span></p>
+            <input type="text" name="name" placeholder="nome de usuário" maxlength="50" required class="box">
+            <p>email <span>*</span></p>
+            <input type="email" name="email" placeholder="email" maxlength="20" required class="box">
          </div>
          <div class="col">
-            <p>your password <span>*</span></p>
-            <input type="password" name="pass" placeholder="enter your password" maxlength="20" required class="box">
-            <p>confirm password <span>*</span></p>
-            <input type="password" name="cpass" placeholder="confirm your password" maxlength="20" required class="box">
+            <p>senha <span>*</span></p>
+            <input type="password" name="pass" placeholder="senha" maxlength="20" required class="box">
+            <p>confirme sua senha <span>*</span></p>
+            <input type="password" name="cpass" placeholder="confirme sua senha" maxlength="20" required class="box">
          </div>
       </div>
-      <p>select pic <span>*</span></p>
+      <p>foto de perfil <span>*</span></p>
       <input type="file" name="image" accept="image/*" required class="box">
-      <p class="link">already have an account? <a href="login.php">login now</a></p>
-      <input type="submit" name="submit" value="register now" class="btn">
+      <p class="link">já possui uma conta cadastrada? <a href="login.php">realize o login</a></p>
+      <input type="submit" name="submit" value="cadastrar" class="btn">
    </form>
 
 </section>

@@ -72,11 +72,11 @@ section{
 .inline-option-btn,
 .inline-delete-btn{
    border-radius: .5rem;
-   padding: 1rem 3rem;
-   font-size: 1.8rem;
+   padding: 1rem 3.5rem;
+   font-size: 1.7rem;
    color: #fff;
    margin-top: 1rem;
-   text-transform: capitalize;
+   /* text-transform: capitalize; */
    cursor: pointer;
    text-align: center;
 }
@@ -1348,7 +1348,7 @@ section{
    font-size: 2.5rem;
    margin-bottom: 1rem;
    color: var(--black);
-   text-transform: capitalize;
+   /* text-transform: capitalize; */
 }
 
 .form-container form p{
