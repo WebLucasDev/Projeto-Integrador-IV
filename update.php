@@ -133,7 +133,7 @@ if(isset($_POST['submit'])){
                <input type="password" name="cpass" placeholder="confirme sua nova senha" maxlength="50" class="box">
          </div>
       </div>
-      <input type="submit" name="submit" value="update profile" class="btn">
+      <input type="submit" name="submit" value="atualize o seu perfil" class="btn">
    </form>
 
 </section>
