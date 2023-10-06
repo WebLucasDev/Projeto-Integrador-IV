@@ -34,15 +34,15 @@ if(isset($_POST['like_content'])){
       if($select_likes->rowCount() > 0){
          $remove_likes = $conn->prepare("DELETE FROM `likes` WHERE user_id = ? AND content_id = ?");
          $remove_likes->execute([$user_id, $content_id]);
-         $message[] = 'removed from likes!';
+         $message[] = 'removido like do conteúdo!';
       }else{
          $insert_likes = $conn->prepare("INSERT INTO `likes`(user_id, tutor_id, content_id) VALUES(?,?,?)");
          $insert_likes->execute([$user_id, $tutor_id, $content_id]);
-         $message[] = 'added to likes!';
+         $message[] = 'adicionado like no conteúdo!';
       }
 
    }else{
-      $message[] = 'please login first!';
+      $message[] = 'Por favor, realize o login primeiramente!';
    }
 
 }
@@ -69,19 +69,19 @@ if(isset($_POST['add_comment'])){
          $select_comment->execute([$content_id, $user_id, $tutor_id, $comment_box]);
 
          if($select_comment->rowCount() > 0){
-            $message[] = 'comment already added!';
+            $message[] = 'comentário já adicionado!';
          }else{
             $insert_comment = $conn->prepare("INSERT INTO `comments`(id, content_id, user_id, tutor_id, comment) VALUES(?,?,?,?,?)");
             $insert_comment->execute([$id, $content_id, $user_id, $tutor_id, $comment_box]);
-            $message[] = 'new comment added!';
+            $message[] = 'novo comentário adicionado!';
          }
 
       }else{
-         $message[] = 'something went wrong!';
+         $message[] = 'algo deu errado!';
       }
 
    }else{
-      $message[] = 'please login first!';
+      $message[] = 'Por favor, realize o login primeiramente!';
    }
 
 }
@@ -97,9 +97,9 @@ if(isset($_POST['delete_comment'])){
    if($verify_comment->rowCount() > 0){
       $delete_comment = $conn->prepare("DELETE FROM `comments` WHERE id = ?");
       $delete_comment->execute([$delete_id]);
-      $message[] = 'comment deleted successfully!';
+      $message[] = 'comentário deletado com sucesso!';
    }else{
-      $message[] = 'comment already deleted!';
+      $message[] = 'comentário já deletado!';
    }
 
 }
@@ -115,11 +115,11 @@ if(isset($_POST['update_now'])){
    $verify_comment->execute([$update_id, $update_box]);
 
    if($verify_comment->rowCount() > 0){
-      $message[] = 'comment already added!';
+      $message[] = 'comentário já adicionado!';
    }else{
       $update_comment = $conn->prepare("UPDATE `comments` SET comment = ? WHERE id = ?");
       $update_comment->execute([$update_box, $update_id]);
-      $message[] = 'comment edited successfully!';
+      $message[] = 'comentário editado com sucesso!';
    }
 
 }
@@ -127,12 +127,12 @@ if(isset($_POST['update_now'])){
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>watch video</title>
+   <title>Área de visualização de conteúdos</title>
 
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
@@ -155,19 +155,19 @@ if(isset($_POST['update_now'])){
          $fetch_edit_comment = $verify_comment->fetch(PDO::FETCH_ASSOC);
 ?>
 <section class="edit-comment">
-   <h1 class="heading">edti comment</h1>
+   <h1 class="heading">editar comentário</h1>
    <form action="" method="post">
       <input type="hidden" name="update_id" value="<?= $fetch_edit_comment['id']; ?>">
-      <textarea name="update_box" class="box" maxlength="1000" required placeholder="please enter your comment" cols="30" rows="10"><?= $fetch_edit_comment['comment']; ?></textarea>
+      <textarea name="update_box" class="box" maxlength="1000" required placeholder="insira seu comentário" cols="30" rows="10"><?= $fetch_edit_comment['comment']; ?></textarea>
       <div class="flex">
-         <a href="watch_video.php?get_id=<?= $get_id; ?>" class="inline-option-btn">cancel edit</a>
-         <input type="submit" value="update now" name="update_now" class="inline-btn">
+         <a href="watch_video.php?get_id=<?= $get_id; ?>" class="inline-option-btn">cancelar edição</a>
+         <input type="submit" value="atualize agora" name="update_now" class="inline-btn">
       </div>
    </form>
 </section>
 <?php
    }else{
-      $message[] = 'comment was not found!';
+      $message[] = 'comentário não foi encontrado!';
    }
 }
 ?>
@@ -210,11 +210,11 @@ if(isset($_POST['update_now'])){
       </div>
       <form action="" method="post" class="flex">
          <input type="hidden" name="content_id" value="<?= $content_id; ?>">
-         <a href="playlist.php?get_id=<?= $fetch_content['playlist_id']; ?>" class="inline-btn">view playlist</a>
+         <a href="playlist.php?get_id=<?= $fetch_content['playlist_id']; ?>" class="inline-btn">visualize as playlist</a>
          <?php
             if($verify_likes->rowCount() > 0){
          ?>
-         <button type="submit" name="like_content"><i class="fas fa-heart"></i><span>liked</span></button>
+         <button type="submit" name="like_content"><i class="fas fa-heart"></i><span>likes em potencial</span></button>
          <?php
          }else{
          ?>
@@ -228,7 +228,7 @@ if(isset($_POST['update_now'])){
    <?php
          }
       }else{
-         echo '<p class="empty">no videos added yet!</p>';
+         echo '<p class="empty">nenhum vídeo adicionado ainda!</p>';
       }
    ?>
 
@@ -240,15 +240,15 @@ if(isset($_POST['update_now'])){
 
 <section class="comments">
 
-   <h1 class="heading">add a comment</h1>
+   <h1 class="heading">adicione um comentário</h1>
 
    <form action="" method="post" class="add-comment">
       <input type="hidden" name="content_id" value="<?= $get_id; ?>">
-      <textarea name="comment_box" required placeholder="write your comment..." maxlength="1000" cols="30" rows="10"></textarea>
-      <input type="submit" value="add comment" name="add_comment" class="inline-btn">
+      <textarea name="comment_box" required placeholder="escreva seu comentário..." maxlength="1000" cols="30" rows="10"></textarea>
+      <input type="submit" value="adicionar comentário" name="add_comment" class="inline-btn">
    </form>
 
-   <h1 class="heading">user comments</h1>
+   <h1 class="heading">comentários dos usuários</h1>
 
    
    <div class="show-comments">
@@ -275,8 +275,8 @@ if(isset($_POST['update_now'])){
          ?>
          <form action="" method="post" class="flex-btn">
             <input type="hidden" name="comment_id" value="<?= $fetch_comment['id']; ?>">
-            <button type="submit" name="edit_comment" class="inline-option-btn">edit comment</button>
-            <button type="submit" name="delete_comment" class="inline-delete-btn" onclick="return confirm('delete this comment?');">delete comment</button>
+            <button type="submit" name="edit_comment" class="inline-option-btn">editar comentário</button>
+            <button type="submit" name="delete_comment" class="inline-delete-btn" onclick="return confirm('deseja deletar seu comentário?');">deletar comentário</button>
          </form>
          <?php
          }
@@ -285,7 +285,7 @@ if(isset($_POST['update_now'])){
       <?php
        }
       }else{
-         echo '<p class="empty">no comments added yet!</p>';
+         echo '<p class="empty">nenhum comentário até o momento!</p>';
       }
       ?>
       </div>
