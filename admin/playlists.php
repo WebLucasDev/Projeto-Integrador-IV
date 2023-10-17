@@ -28,16 +28,16 @@ if(isset($_POST['delete'])){
    $delete_bookmark->execute([$delete_id]);
    $delete_playlist = $conn->prepare("DELETE FROM `playlist` WHERE id = ?");
    $delete_playlist->execute([$delete_id]);
-   $message[] = 'playlist deleted!';
+   $message[] = 'playlist deletada!';
    }else{
-      $message[] = 'playlist already deleted!';
+      $message[] = 'playlist já cadastrada!';
    }
 }
 
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -57,13 +57,13 @@ if(isset($_POST['delete'])){
 
 <section class="playlists">
 
-   <h1 class="heading">added playlists</h1>
+   <h1 class="heading">adicionar playlists</h1>
 
    <div class="box-container">
    
       <div class="box" style="text-align: center;">
-         <h3 class="title" style="margin-bottom: .5rem;">create new playlist</h3>
-         <a href="add_playlist.php" class="btn">add playlist</a>
+         <h3 class="title" style="margin-bottom: .5rem;">crie uma nova playlist</h3>
+         <a href="add_playlist.php" class="btn">adicionar playlist</a>
       </div>
 
       <?php
@@ -89,15 +89,15 @@ if(isset($_POST['delete'])){
          <p class="description"><?= $fetch_playlist['description']; ?></p>
          <form action="" method="post" class="flex-btn">
             <input type="hidden" name="playlist_id" value="<?= $playlist_id; ?>">
-            <a href="update_playlist.php?get_id=<?= $playlist_id; ?>" class="option-btn">update</a>
-            <input type="submit" value="delete" class="delete-btn" onclick="return confirm('delete this playlist?');" name="delete">
+            <a href="update_playlist.php?get_id=<?= $playlist_id; ?>" class="option-btn">modificar</a>
+            <input type="submit" value="deletar" class="delete-btn" onclick="return confirm('deseja mesmo deletar essa playlist?');" name="delete">
          </form>
-         <a href="view_playlist.php?get_id=<?= $playlist_id; ?>" class="btn">view playlist</a>
+         <a href="view_playlist.php?get_id=<?= $playlist_id; ?>" class="btn">ver playlist</a>
       </div>
       <?php
          } 
       }else{
-         echo '<p class="empty">no playlist added yet!</p>';
+         echo '<p class="empty">nenhuma playlist adicionada até o momento!</p>';
       }
       ?>
 

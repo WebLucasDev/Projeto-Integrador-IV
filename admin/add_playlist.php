@@ -32,19 +32,19 @@ if(isset($_POST['submit'])){
 
    move_uploaded_file($image_tmp_name, $image_folder);
 
-   $message[] = 'new playlist created!';  
+   $message[] = 'nova playlist criada!';  
 
 }
 
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Add Playlist</title>
+   <title>Adicionar Playlist</title>
 
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
@@ -59,22 +59,22 @@ if(isset($_POST['submit'])){
    
 <section class="playlist-form">
 
-   <h1 class="heading">create playlist</h1>
+   <h1 class="heading">criar playlist</h1>
 
    <form action="" method="post" enctype="multipart/form-data">
-      <p>playlist status <span>*</span></p>
+      <p>status da playlist <span>*</span></p>
       <select name="status" class="box" required>
-         <option value="" selected disabled>-- select status</option>
-         <option value="active">active</option>
-         <option value="deactive">deactive</option>
+         <option value="" selected disabled>-- selecione o status</option>
+         <option value="ativa">ativa</option>
+         <option value="inativa">inativa</option>
       </select>
-      <p>playlist title <span>*</span></p>
-      <input type="text" name="title" maxlength="100" required placeholder="enter playlist title" class="box">
-      <p>playlist description <span>*</span></p>
-      <textarea name="description" class="box" required placeholder="write description" maxlength="1000" cols="30" rows="10"></textarea>
-      <p>playlist thumbnail <span>*</span></p>
+      <p>título da playlist <span>*</span></p>
+      <input type="text" name="title" maxlength="100" required placeholder="digite o título da playlist" class="box">
+      <p>descrição da playlist <span>*</span></p>
+      <textarea name="description" class="box" required placeholder="digite a descrição" maxlength="1000" cols="30" rows="10"></textarea>
+      <p>imagem de capa da playlist <span>*</span></p>
       <input type="file" name="image" accept="image/*" required class="box">
-      <input type="submit" value="create playlist" name="submit" class="btn">
+      <input type="submit" value="criar playlist" name="submit" class="btn">
    </form>
 
 </section>
