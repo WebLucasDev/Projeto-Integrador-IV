@@ -28,24 +28,24 @@ if(isset($_POST['submit'])){
    if(!empty($name)){
       $update_name = $conn->prepare("UPDATE `tutors` SET name = ? WHERE id = ?");
       $update_name->execute([$name, $tutor_id]);
-      $message[] = 'username updated successfully!';
+      $message[] = 'usuário alterado com sucesso!';
    }
 
    if(!empty($profession)){
       $update_profession = $conn->prepare("UPDATE `tutors` SET profession = ? WHERE id = ?");
       $update_profession->execute([$profession, $tutor_id]);
-      $message[] = 'profession updated successfully!';
+      $message[] = 'especialização alterada com sucesso!';
    }
 
    if(!empty($email)){
       $select_email = $conn->prepare("SELECT email FROM `tutors` WHERE id = ? AND email = ?");
       $select_email->execute([$tutor_id, $email]);
       if($select_email->rowCount() > 0){
-         $message[] = 'email already taken!';
+         $message[] = 'email já cadastrado!';
       }else{
          $update_email = $conn->prepare("UPDATE `tutors` SET email = ? WHERE id = ?");
          $update_email->execute([$email, $tutor_id]);
-         $message[] = 'email updated successfully!';
+         $message[] = 'email alterado com sucesso!';
       }
    }
 
@@ -59,7 +59,7 @@ if(isset($_POST['submit'])){
 
    if(!empty($image)){
       if($image_size > 2000000){
-         $message[] = 'image size too large!';
+         $message[] = 'tamanho da imagem muito grande!';
       }else{
          $update_image = $conn->prepare("UPDATE `tutors` SET `image` = ? WHERE id = ?");
          $update_image->execute([$rename, $tutor_id]);
@@ -67,7 +67,7 @@ if(isset($_POST['submit'])){
          if($prev_image != '' AND $prev_image != $rename){
             unlink('../uploaded_files/'.$prev_image);
          }
-         $message[] = 'image updated successfully!';
+         $message[] = 'imagem alterada com sucesso!';
       }
    }
 
@@ -81,16 +81,16 @@ if(isset($_POST['submit'])){
 
    if($old_pass != $empty_pass){
       if($old_pass != $prev_pass){
-         $message[] = 'old password not matched!';
+         $message[] = 'senha anterior não correspondente!';
       }elseif($new_pass != $cpass){
-         $message[] = 'confirm password not matched!';
+         $message[] = 'confirme a senha primeiramente!';
       }else{
          if($new_pass != $empty_pass){
             $update_pass = $conn->prepare("UPDATE `tutors` SET password = ? WHERE id = ?");
             $update_pass->execute([$cpass, $tutor_id]);
-            $message[] = 'password updated successfully!';
+            $message[] = 'senha alterada com sucesso!';
          }else{
-            $message[] = 'please enter a new password!';
+            $message[] = 'por favor, insira a nova senha!';
          }
       }
    }
@@ -100,12 +100,12 @@ if(isset($_POST['submit'])){
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Update Profile</title>
+   <title>Alterar Perfil</title>
 
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
@@ -123,16 +123,16 @@ if(isset($_POST['submit'])){
 <section class="form-container" style="min-height: calc(100vh - 19rem);">
 
    <form class="register" action="" method="post" enctype="multipart/form-data">
-      <h3>update profile</h3>
+      <h3>alterar perfil</h3>
       <div class="flex">
          <div class="col">
-            <p>your name </p>
+            <p>nome </p>
             <input type="text" name="name" placeholder="<?= $fetch_profile['name']; ?>" maxlength="50"  class="box">
-            <p>your profession </p>
+            <p>especialização </p>
             <select name="profession" class="box">
                <option value="" selected><?= $fetch_profile['profession']; ?></option>
-               <option value="developer">developer</option>
-               <option value="desginer">desginer</option>
+               <option value="developer">teste</option>
+               <!-- <option value="desginer">desginer</option>
                <option value="musician">musician</option>
                <option value="biologist">biologist</option>
                <option value="teacher">teacher</option>
@@ -141,23 +141,23 @@ if(isset($_POST['submit'])){
                <option value="accountant">accountant</option>
                <option value="doctor">doctor</option>
                <option value="journalist">journalist</option>
-               <option value="photographer">photographer</option>
+               <option value="photographer">photographer</option> -->
             </select>
-            <p>your email </p>
+            <p>email </p>
             <input type="email" name="email" placeholder="<?= $fetch_profile['email']; ?>" maxlength="20"  class="box">
          </div>
          <div class="col">
-            <p>old password :</p>
-            <input type="password" name="old_pass" placeholder="enter your old password" maxlength="20"  class="box">
-            <p>new password :</p>
-            <input type="password" name="new_pass" placeholder="enter your new password" maxlength="20"  class="box">
-            <p>confirm password :</p>
-            <input type="password" name="cpass" placeholder="confirm your new password" maxlength="20"  class="box">
+            <p>senha anterior :</p>
+            <input type="password" name="old_pass" placeholder="digite sua senha anterior" maxlength="20"  class="box">
+            <p>nova senha :</p>
+            <input type="password" name="new_pass" placeholder="digite sua nova senha" maxlength="20"  class="box">
+            <p>confirme a nova senha :</p>
+            <input type="password" name="cpass" placeholder="confirme sua nova senha" maxlength="20"  class="box">
          </div>
       </div>
-      <p>update pic :</p>
+      <p>alterar foto :</p>
       <input type="file" name="image" accept="image/*"  class="box">
-      <input type="submit" name="submit" value="update now" class="btn">
+      <input type="submit" name="submit" value="alterar agora" class="btn">
    </form>
 
 </section>

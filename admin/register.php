@@ -28,15 +28,15 @@ if(isset($_POST['submit'])){
    $select_tutor->execute([$email]);
    
    if($select_tutor->rowCount() > 0){
-      $message[] = 'email already taken!';
+      $message[] = 'email já utilizado!';
    }else{
       if($pass != $cpass){
-         $message[] = 'confirm passowrd not matched!';
+         $message[] = 'confirme a senha primeiramente!';
       }else{
          $insert_tutor = $conn->prepare("INSERT INTO `tutors`(id, name, profession, email, password, image) VALUES(?,?,?,?,?,?)");
          $insert_tutor->execute([$id, $name, $profession, $email, $cpass, $rename]);
          move_uploaded_file($image_tmp_name, $image_folder);
-         $message[] = 'new tutor registered! please login now';
+         $message[] = 'cadastro realizado com sucesso! realie o login';
       }
    }
 
@@ -45,12 +45,12 @@ if(isset($_POST['submit'])){
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>register</title>
+   <title>Registre-se</title>
 
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
@@ -79,16 +79,16 @@ if(isset($message)){
 <section class="form-container">
 
    <form class="register" action="" method="post" enctype="multipart/form-data">
-      <h3>register new</h3>
+      <h3>cadastro</h3>
       <div class="flex">
          <div class="col">
-            <p>your name <span>*</span></p>
-            <input type="text" name="name" placeholder="eneter your name" maxlength="50" required class="box">
-            <p>your profession <span>*</span></p>
+            <p>nome <span>*</span></p>
+            <input type="text" name="name" placeholder="digite seu nome" maxlength="50" required class="box">
+            <p>área de especialização <span>*</span></p>
             <select name="profession" class="box" required>
-               <option value="" disabled selected>-- select your profession</option>
-               <option value="developer">developer</option>
-               <option value="desginer">desginer</option>
+               <option value="" disabled selected>-- selecione sua especialização</option>
+               <option value="developer">teste</option>
+               <!-- <option value="desginer">desginer</option>
                <option value="musician">musician</option>
                <option value="biologist">biologist</option>
                <option value="teacher">teacher</option>
@@ -97,22 +97,22 @@ if(isset($message)){
                <option value="accountant">accountant</option>
                <option value="doctor">doctor</option>
                <option value="journalist">journalist</option>
-               <option value="photographer">photographer</option>
+               <option value="photographer">photographer</option> -->
             </select>
-            <p>your email <span>*</span></p>
-            <input type="email" name="email" placeholder="enter your email" maxlength="20" required class="box">
+            <p>email <span>*</span></p>
+            <input type="email" name="email" placeholder="digite seu email" maxlength="20" required class="box">
          </div>
          <div class="col">
-            <p>your password <span>*</span></p>
-            <input type="password" name="pass" placeholder="enter your password" maxlength="20" required class="box">
-            <p>confirm password <span>*</span></p>
-            <input type="password" name="cpass" placeholder="confirm your password" maxlength="20" required class="box">
-            <p>select pic <span>*</span></p>
+            <p>senha <span>*</span></p>
+            <input type="password" name="pass" placeholder="digite sua senha" maxlength="20" required class="box">
+            <p>confirme sua senha <span>*</span></p>
+            <input type="password" name="cpass" placeholder="confirme sua senha" maxlength="20" required class="box">
+            <p>foto <span>*</span></p>
             <input type="file" name="image" accept="image/*" required class="box">
          </div>
       </div>
-      <p class="link">already have an account? <a href="login.php">login now</a></p>
-      <input type="submit" name="submit" value="register now" class="btn">
+      <p class="link">já possui uma conta cadastrada? <a href="login.php">realize o login</a></p>
+      <input type="submit" name="submit" value="cadastrar" class="btn">
    </form>
 
 </section>

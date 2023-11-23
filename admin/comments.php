@@ -20,9 +20,9 @@ if(isset($_POST['delete_comment'])){
    if($verify_comment->rowCount() > 0){
       $delete_comment = $conn->prepare("DELETE FROM `comments` WHERE id = ?");
       $delete_comment->execute([$delete_id]);
-      $message[] = 'comment deleted successfully!';
+      $message[] = 'comentário deletado com sucesso!';
    }else{
-      $message[] = 'comment already deleted!';
+      $message[] = 'comentário já deletado!';
    }
 
 }
@@ -30,7 +30,7 @@ if(isset($_POST['delete_comment'])){
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -51,7 +51,7 @@ if(isset($_POST['delete_comment'])){
 
 <section class="comments">
 
-   <h1 class="heading">user comments</h1>
+   <h1 class="heading">Comentários de usuários</h1>
 
    
    <div class="show-comments">
@@ -65,17 +65,17 @@ if(isset($_POST['delete_comment'])){
                $fetch_content = $select_content->fetch(PDO::FETCH_ASSOC);
       ?>
       <div class="box" style="<?php if($fetch_comment['tutor_id'] == $tutor_id){echo 'order:-1;';} ?>">
-         <div class="content"><span><?= $fetch_comment['date']; ?></span><p> - <?= $fetch_content['title']; ?> - </p><a href="view_content.php?get_id=<?= $fetch_content['id']; ?>">view content</a></div>
+         <div class="content"><span><?= $fetch_comment['date']; ?></span><p> - <?= $fetch_content['title']; ?> - </p><a href="view_content.php?get_id=<?= $fetch_content['id']; ?>">ver conteúdo</a></div>
          <p class="text"><?= $fetch_comment['comment']; ?></p>
          <form action="" method="post">
             <input type="hidden" name="comment_id" value="<?= $fetch_comment['id']; ?>">
-            <button type="submit" name="delete_comment" class="inline-delete-btn" onclick="return confirm('delete this comment?');">delete comment</button>
+            <button type="submit" name="delete_comment" class="inline-delete-btn" onclick="return confirm('deseja deletar esse comentário?');">deletar comentário</button>
          </form>
       </div>
       <?php
        }
       }else{
-         echo '<p class="empty">no comments added yet!</p>';
+         echo '<p class="empty">nenhum comentário adicionado até o momento!</p>';
       }
       ?>
       </div>
