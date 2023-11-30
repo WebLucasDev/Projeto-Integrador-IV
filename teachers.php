@@ -35,7 +35,7 @@ if(isset($_COOKIE['user_id'])){
 
    <h1 class="heading">Professores</h1>
 
-   <form action="search_tutor.php" method="post" class="search-tutor">pesquise pelo professor que você deseja...
+   <form action="search_tutor.php" method="post" class="search-tutor">
       <input type="text" name="search_tutor" maxlength="100" placeholder="pesquise pelo professor que você deseja..." required>
       <button type="submit" name="search_tutor_btn" class="fas fa-search"></button>
    </form>
